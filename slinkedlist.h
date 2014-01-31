@@ -22,4 +22,5 @@ public:
 	virtual void print()const;
 	virtual bool isEmpty()const;
 	virtual bool isFull()const;
+	/*/
 };
