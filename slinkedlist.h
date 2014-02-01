@@ -13,14 +13,13 @@ public:
 	virtual bool insert(Object*,int);
 	virtual int indexOf(OBject*)const;
 	virtual Object* get(unsigned)const;
-	virtual bool erase(unsigned);
+	virtual Object* remove(unsigned);
 	virtual int prev(int)const;
 	virtual int next(int)const;
-	virtual void reset();
+	virtual void clear();
 	virtual Object* first()const;
 	virtual Object* last()const;
 	virtual void print()const;
 	virtual bool isEmpty()const;
 	virtual bool isFull()const;
-	/*/
 };
