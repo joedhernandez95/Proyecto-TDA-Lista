@@ -102,10 +102,10 @@ Object* LinkedList::get(unsigned index)const {
 * desenlazarlo de la lista y luego liberar su memoria, pues en caso contrario
 * liberaríamos todos los elementos siguiente a este elemento.
 */
-bool LinkedList::erase(unsigned pos) {
+Object* LinkedList::remove(unsigned pos) {
     // Si es una posición Inválida
     if (pos < 0 || pos >= size)
-        return false; // Indicar fracaso en la operación
+        return NULL; // Indicar fracaso en la operación
     DLLNode* tmp;
     if (pos == 0){ // Desea Borrar la Cabeza
         // Desenlazar
@@ -142,7 +142,7 @@ bool LinkedList::erase(unsigned pos) {
         delete toErase;        
     }
     size--; // Disminuir Tamaño
-    return true; // Indicar Éxito
+    return toErase->getData(); // Indicar Éxito
 }
 // Retorna el anterior a la posición pos
 // Implementado de la manera más sencilla, pues podría haberse usado
@@ -158,7 +158,7 @@ int LinkedList::next(int pos) const {
 }
 // Elimina todos los elementos de la lista, coloca size en cero, y la cabeza
 // en NULL, o sea que hace un poco más que el destructor.
-void LinkedList::reset() {
+void LinkedList::clear() {
     if (head)
         delete head;
     head = NULL;

@@ -13,14 +13,14 @@
 
 class TDAList : public Object{
   protected:
-    unsigned int size;
+    unsigned int ssize;
   public:
     TDAList();
     virtual ~TDAList();
     virtual bool insert(Object*, int) = 0;
     virtual int indexOf(Object*)const = 0;
     virtual Object* get(unsigned)const = 0;
-    virtual bool remove(unsigned) = 0;
+    virtual Object* remove(unsigned) = 0;
     virtual int prev(int) const = 0;
     virtual int next(int) const = 0;
     virtual void clear() = 0;
@@ -29,7 +29,7 @@ class TDAList : public Object{
     virtual void print()const = 0;
     virtual bool isEmpty()const;
     virtual bool isFull()const = 0;
-    int getSize()const;
+    int size()const;
 };
 
 #endif

@@ -15,7 +15,7 @@ a) Si la lista esta vacia
 b) Si se inserta al frente
 c) Si se inserta al medio*/
 bool SLinkedList::insert(Object* data,int pos){
-	if(pos < 0 || pos > size)
+	if(pos < 0 || pos > ssize)
 		return false;
 	SLNode* neo = new SLNode(data);
 	if(!neo)
@@ -36,7 +36,7 @@ bool SLinkedList::insert(Object* data,int pos){
 			tmpn->setNext(neo);
 		}
 	}
-	size++;
+	ssize++;
 	return true;
 }
 
@@ -45,11 +45,11 @@ int SLinkedList::indexOf(Object* data)const{
 		return -1;
 	}
 	SLNode* tmpn = head;
-	for(int i = 0; i < size; i++){
-		if(tmp->getData()->equals(data)){
+	for(int i = 0; i < ssize; i++){
+		if(tmpn->getData()->equals(data)){
 			return i;
 		}
-		tmpn->tmpn->getNext();
+		tmpn = tmpn->getNext();
 	}
 	return -1;
 }
@@ -58,11 +58,11 @@ Object* SLinkedList::get(unsigned int pos)const{
 	if(isEmpty()){
 		return NULL;
 	}
-	if(p < 0 && p >= size){
+	if(pos < 0 && pos >= ssize){
 		return NULL;
 	}
 	SLNode* tmpn = head;
-	for(int i = 0; i < size; i++){
+	for(int i = 0; i < ssize; i++){
 		tmpn = tmpn->getNext();
 	}
 	return tmpn->getData();
@@ -72,7 +72,7 @@ Object* SLinkedList::remove(unsigned int pos){
 	if(isEmpty()){
 		return NULL;
 	}
-	if(pos < 0 || pos > size){
+	if(pos < 0 || pos > ssize){
 		return NULL;
 	}
 
@@ -92,7 +92,7 @@ Object* SLinkedList::remove(unsigned int pos){
 	neo->setData(NULL);
 	neo->setNext(NULL);
 	delete neo;
-	size--;
+	ssize--;
 	return retVal;
 }
 
@@ -108,7 +108,7 @@ void SLinkedList::clear(){
 	if(!(isEmpty())){
 		delete head;
 		head = NULL;
-		size = 0;
+		ssize = 0;
 	}
 }
 
@@ -126,7 +126,7 @@ Object* SLinkedList::last()const{
 	}
 
 	SLNode* tmpn = head;
-	for(int i = 0; i < size-1; i++){
+	for(int i = 0; i < ssize-1; i++){
 		tmpn = tmpn->getNext();
 	}
 
@@ -136,7 +136,7 @@ Object* SLinkedList::last()const{
 void SLinkedList::print()const{
 	if(!(isEmpty())){
 		SLNode* tmpn = head;
-		for(int i = 0; i < size; i++){
+		for(int i = 0; i < ssize; i++){
 			tmpn->getData()->print();
 			tmpn = tmpn->getNext();
 		}
@@ -145,8 +145,10 @@ void SLinkedList::print()const{
 }
 
 bool SLinkedList::isEmpty()const{
-	if(size == 0){
+	if(ssize == 0){
 		return true;
+	} else {
+		return false;
 	}
 }
 
@@ -154,5 +156,4 @@ bool SLinkedList::isFull()const{
 	return false;
 }
 
-}
 

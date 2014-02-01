@@ -4,14 +4,14 @@
 #include "slnode.h"
 #include "tdalist.h"
 
-class SLinkedList : public TDAList{
+class SLinkedList : public TDAList {
 protected:
 	SLNode* head;
 public:
 	SLinkedList();
 	virtual ~SLinkedList();
 	virtual bool insert(Object*,int);
-	virtual int indexOf(OBject*)const;
+	virtual int indexOf(Object*)const;
 	virtual Object* get(unsigned)const;
 	virtual Object* remove(unsigned);
 	virtual int prev(int)const;
@@ -23,3 +23,5 @@ public:
 	virtual bool isEmpty()const;
 	virtual bool isFull()const;
 };
+
+#endif

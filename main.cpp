@@ -1,11 +1,11 @@
 #include <iostream>
 #include <cstdlib>
 #include "tdalist.h"
-#include "varraylist.h" 	//Arreglos de tamaño variable
-#include "farraylist.h" 	//Arreglos de tamaño fijo
+//#include "varraylist.h" 	//Arreglos de tamaño variable
+//#include "farraylist.h" 	//Arreglos de tamaño fijo
 #include "slinkedlist.h" 	//Lista Enlazada Sencilla
-#include "linkedlist.h"         //Lista Doblemente Enlazada
-#include "dlcursorlist.h"       //Cursor de Tamaño Fijo simulando lista doblemente enlazada
+//#include "linkedlist.h"         //Lista Doblemente Enlazada
+//#include "dlcursorlist.h"       //Cursor de Tamaño Fijo simulando lista doblemente enlazada
 
 #include "integer.h"
 
@@ -28,27 +28,35 @@ using namespace std;
 
 
 
-void testTDA(TDAList*);
+//void testTDA(TDAList*);
 
 int main(int argc, char *argv[])
 {
-	TDAList* list;
-	list = new VArrayList(10, 5);
+	TDAList* l = new SLinkedList();
+	Object* a = new Integer(1);
+	Object* b = new Integer(2);
+	l->insert(a,0);
+	l->insert(b,0);
+	cout << l->size() << endl;
+	cout << l->isEmpty()<<endl;
+
+	//TDAList* list;
+	/*list = new VArrayList(10, 5);
 	testTDA(list);
 	delete list;
 	
 
 	list = new FArrayList(25);
 	testTDA(list);
-	delete list;
+	delete list;*/
    
    
-	list = new SLinkedList();
+	/*list = new SLinkedList();
 	testTDA(list);
-	delete list;
+	delete list;*/
    
    
-	list = new LinkedList();
+	/*list = new LinkedList();
 	testTDA(list);
 	delete list;
    
@@ -56,11 +64,11 @@ int main(int argc, char *argv[])
 	list = new DLCursorList();
 	testTDA(list);
 	delete list;
-    
+    */
     return 0;
 }
 
-
+/*
 void testTDA(TDAList* list){
 	// Insert 20 numbers
 	for (int i=0; i<20; i++)
@@ -88,9 +96,12 @@ void testTDA(TDAList* list){
 
 	// indexOf
 	for (int i=0; i<20; i++){
-		cout << "list->indexOf(" << i << ") = " << list->indexOf( & Integer(i) ) << endl;
+		cout << "pene"<<endl;
+		//cout << "list->indexOf(" << i << ") = " << list->indexOf( new Integer(i) ) << endl;
 	}
 
 	list->clear();
 	cout << "Size = " << list->size() << endl;
+
 }
+*/

@@ -8,11 +8,11 @@ SLNode::SLNode(){
 	data = NULL;
 }
 
-SLNode::SLNode(OBject* aData){
+SLNode::SLNode(Object* aData){
 	data = aData;
 }
 
-SLNode::SLNode(OBject* aData,SLNode* aNext){
+SLNode::SLNode(Object* aData,SLNode* aNext){
 	data = aData;
 	next = aNext;
 }
