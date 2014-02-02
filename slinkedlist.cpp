@@ -62,7 +62,7 @@ Object* SLinkedList::get(unsigned int pos)const{
 		return NULL;
 	}
 	SLNode* tmpn = head;
-	for(int i = 0; i < ssize; i++){
+	for(int i = 0; i < pos; i++){
 		tmpn = tmpn->getNext();
 	}
 	return tmpn->getData();
