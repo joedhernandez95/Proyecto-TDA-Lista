@@ -11,8 +11,6 @@
 * El único miembro que tiene esta clase es head, que representa la cabeza de 
 * la lista, no es necesario tener size, pues lo heredamos de la clase base.
 */
-
-//actualizar este y linkedlist, el erase y el reset por remove y clear
 class LinkedList : public TDAList{
   protected:
     DLLNode* head;
@@ -25,11 +23,11 @@ class LinkedList : public TDAList{
     virtual Object* remove(unsigned) ;
     virtual int prev(int) const ;
     virtual int next(int) const ;
-    virtual void clear() ;
+    virtual void clear();
     virtual Object* first()const ;
     virtual Object* last()const ;
     virtual void print()const ;
-    virtual bool isFull()const ;
+    virtual bool isFull()const;
 };
 
 #endif

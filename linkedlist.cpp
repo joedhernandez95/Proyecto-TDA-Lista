@@ -2,6 +2,15 @@
 #include "tdalist.h"
 #include "dllnode.h"
 #include "linkedlist.h"
+
+#include <iostream>
+#include <string>
+#include <sstream>
+using std::cout;
+using std::endl;
+using std::string;
+using std::stringstream;
+
 // Para tener la definición del NULL sin declarar más identificadores
 // innecesarios
 #include <stddef.h>
@@ -26,7 +35,7 @@ LinkedList::~LinkedList(){
 */
 bool LinkedList::insert(Object* data, int pos) {
     // Si se desa meter en una posición inválida
-    if (pos < 0 || pos > size())
+    if (pos < 0 || pos > ssize)
         return false; // Fracaso en esta Operación
     
     // Creación del Nodo que insertaremos en la lista
@@ -41,7 +50,7 @@ bool LinkedList::insert(Object* data, int pos) {
             neo->setNext(head);
             // Actualizar la cabeza
             head = neo;
-        }else if (pos > 0 && pos < size()){ // Desea Insertar en medio
+        }else if (pos > 0 && pos < ssize){ // Desea Insertar en medio
             DLLNode* tmp = head;
             // Recorrer hasta la posición anterior a la que deseamos insertar
             for (int i=1; i<pos; i++)
@@ -74,7 +83,7 @@ bool LinkedList::insert(Object* data, int pos) {
 */
 int LinkedList::indexOf(Object* other)const {
     DLLNode* tmp = head;
-    for (int i=0; i < size(); i++){
+    for (int i=0; i < ssize; i++){
         // Compara cada uno de los elementos con el parámetro
         if (tmp->getData()->equals(other))
                 return i;
@@ -85,7 +94,7 @@ int LinkedList::indexOf(Object* other)const {
 }
 // Consigue el elemento index de la lista, si index es una posición válida
 Object* LinkedList::get(unsigned index)const {
-    if (index < 0 || index >= size())
+    if (index < 0 || index >= ssize)
         return NULL;
     DLLNode* tmp = head;
     for (int i=0; i < index; i++)
@@ -103,41 +112,47 @@ Object* LinkedList::get(unsigned index)const {
 * liberaríamos todos los elementos siguiente a este elemento.
 */
 Object* LinkedList::remove(unsigned pos) {
-    // Si es una posición Inválida
-    if (pos < 0 || pos >= size())
-        return NULL; // Indicar fracaso en la operación
+
+	Object* ret = NULL;    
+
+	// Si es una posición Inválida
+    if (pos < 0 || pos >= ssize)
+        return ret; // Indicar fracaso en la operación
     DLLNode* tmp;
     if (pos == 0){ // Desea Borrar la Cabeza
         // Desenlazar
+
+	ret = head->getData();
+
         tmp = head->getNext();
         tmp->setPrev(NULL);
         head->setNext(NULL);
         // Liberar Memoria
-        DLLNode* temporal = tmp;
         delete head;
         // Actualizar head
         head = tmp;
-        ssize--;
-        return tmp->getData();
-    }else if (pos == size() - 1){ // Desea Borrar el último
+    }else if (pos == ssize - 1){ // Desea Borrar el último
         // Recorrer hasta el final
         tmp = head;
         for (int i=1; i<pos; i++)
            tmp = tmp->getNext();
+
+	ret = tmp->getData();
+
         // Desenlazar
         DLLNode* toErase = tmp->getNext();   
         tmp->setNext(NULL);
         toErase->setPrev(NULL);
         // Liberar Memoria
-        DLLNode* temporal = toErase;
         delete toErase;
-        ssize--; // Disminuir Tamaño
-        return temporal->getData(); // Indicar Éxito
     }else { // Desea Borrar de enmedio
         // Recorrer hasta el nodo anterior al que se desea borrar
         tmp = head;
         for (int i=1; i<pos; i++)
            tmp = tmp->getNext();
+
+	ret = (tmp->getNext())->getData();
+
         // Desenlazar
         DLLNode* toErase = tmp->getNext();
         tmp->setNext(toErase->getNext());
@@ -145,11 +160,10 @@ Object* LinkedList::remove(unsigned pos) {
         toErase->setNext(NULL);
         toErase->setPrev(NULL);
         // Liberar Memoria
-        DLLNode* temporal = toErase;
-        delete toErase;       
-        ssize--; // Disminuir Tamaño
-        return temporal->getData(); // Indicar Éxito
+        delete toErase;        
     }
+    ssize--; // Disminuir Tamaño
+    return ret; // Indicar Éxito
 }
 // Retorna el anterior a la posición pos
 // Implementado de la manera más sencilla, pues podría haberse usado
@@ -182,21 +196,22 @@ Object* LinkedList::last()const {
     if (!head)
         return NULL;
     DLLNode* tmp = head;
-    for (int i=0; i < size(); i++)
+    for (int i=0; i < ssize; i++)
         tmp = tmp->getNext();
     return tmp->getData();
 }
+
 // Imprime cada uno de los elementos que hay en la lista, llamando al método
 // print de cada nodo.
 void LinkedList::print()const {
     DLLNode* tmp = head;
-    for (int i=0; i < size(); i++){
+    for (int i=0; i < ssize; i++){
         tmp->print();
         tmp = tmp->getNext();
     }    
 }
+
 // Retorna si la lista está llena, como nunca es así, retorna false siempre.
 bool LinkedList::isFull()const {
     return false;
 }
-
