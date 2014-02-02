@@ -11,6 +11,8 @@
 * El único miembro que tiene esta clase es head, que representa la cabeza de 
 * la lista, no es necesario tener size, pues lo heredamos de la clase base.
 */
+
+//actualizar este y linkedlist, el erase y el reset por remove y clear
 class LinkedList : public TDAList{
   protected:
     DLLNode* head;
