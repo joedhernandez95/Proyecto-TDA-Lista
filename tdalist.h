@@ -11,8 +11,12 @@
 * vista en clase.
 */
 
+//actualizar este y linkedlist, el erase y el reset por remove y clear
+
+//TDAList no puede ser interfaz en java porque tiene un dato miembro
+
 class TDAList : public Object{
-  protected:
+  public:
     unsigned int ssize;
   public:
     TDAList();
@@ -29,6 +33,7 @@ class TDAList : public Object{
     virtual void print()const = 0;
     virtual bool isEmpty()const;
     virtual bool isFull()const = 0;
+    ////////int getSize()const;
     int size()const;
 };
 

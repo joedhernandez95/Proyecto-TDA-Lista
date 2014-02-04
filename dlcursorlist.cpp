@@ -1,4 +1,6 @@
 #include "dlcursorlist.h"
+#include <iostream>
+using namespace std;
 
 
 //Constructor. Recibe un entero que determina su capacidad.
@@ -6,17 +8,21 @@ DLCursorList::DLCursorList(int n)
 {
 	capacity = n;
 	map = new Registry[capacity];
+	//cout << "Capacity = " << capacity << endl;
+
+	for(int i = 0; i < capacity; i++)
+	{
+		if(map[i].datum)
+			map[i].datum = NULL;
+
+		map[i].prev = -1;
+		map[i].next = -1;
+	}
 }
 
 //Destructor.
 DLCursorList::~DLCursorList()
 {
-	for(int i = 0; i < capacity; i++)
-	{
-		if(map[i].datum)
-			delete map[i].datum;
-	}
-
 	delete[] map;
 }
 
@@ -38,6 +44,8 @@ bool DLCursorList::insert(Object* o, int i)
 	//Encuentra un nuevo espacio.
 	int neo = findNextSlot();
 
+	//cout << "Neo encontrado: " << neo << endl;
+
 	if(neo == -1)
 	{
 		return false;
@@ -46,14 +54,19 @@ bool DLCursorList::insert(Object* o, int i)
 	{
 		//Ponemos el dato en el espacio designado.
 		map[neo].datum = o;
+	
+		//cout << "Puse el dato en NEO." << endl;
 
 		if(i == 0)
 		{
-			//Ahora hacemos que neo apunte a la cabeza.
-			map[neo].next = head;
+			if(ssize != 0)
+			{
+				//Ahora hacemos que neo apunte a la cabeza.
+				map[neo].next = head;
 
-			//Hacemos que head también apunte a neo.
-			map[head].prev = neo;
+				//Hacemos que head también apunte a neo.
+				map[head].prev = neo;
+			}
 
 			//Convertimos el nuevo nodo en la cabeza.
 			head = neo;
@@ -66,6 +79,7 @@ bool DLCursorList::insert(Object* o, int i)
 			//Recorre la lista. Se detiene en i-1.
 			for(int j = 0; j < i-1; j++)
 			{
+				//cout << "Vuelta insert: " << j << endl;
 				tmp = map[tmp].next;
 			}
 
@@ -99,15 +113,21 @@ int DLCursorList::indexOf(Object* object) const
 
 	if(ssize > 0)
 	{
-		for(int j = 0; j < capacity; j++)
+		int tmp = head;
+
+		for(int j = 0; j < ssize-1; j++)
 		{
-			if((map[j].datum)->equals(object))
+			if((map[tmp].datum)->equals(object))
 			{
 				i = j;
 				break;
 			}
+			
+			tmp = map[tmp].next;
 		}
 	}
+	
+	return i;
 }
 
 //Retorna el objeto localizado en la posición especificada.
@@ -119,7 +139,12 @@ Object* DLCursorList::get(unsigned i) const
 	}
 	else
 	{
-		return map[i].datum;
+		int tmp = head;
+
+		for(int j = 0; j < i; j++)
+			tmp = map[tmp].next;
+
+		return map[tmp].datum;
 	}
 }
 
@@ -268,7 +293,7 @@ Object* DLCursorList::last() const
 	{
 		int tmp = head;
 
-		for(int i = 0; i < ssize; i++)
+		for(int i = 0; i < ssize-1; i++)
 		{
 			tmp = map[tmp].next;
 		}
@@ -309,6 +334,10 @@ int DLCursorList::findNextSlot() const
 		{
 			ret = i;
 			break;
+		}
+		else
+		{
+			//cout << endl << i << " esta lleno." << endl;
 		}
 	}
 

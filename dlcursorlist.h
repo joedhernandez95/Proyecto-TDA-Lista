@@ -22,12 +22,12 @@ class DLCursorList : public TDAList
 	int capacity;
 	
 
-	//Encuentra un nuevo espacio dÛnde insertar.
+	//Encuentra un nuevo espacio d√≥nde insertar.
 	int findNextSlot() const;
 
 public:
 	//Constructor. Recibe un entero que determina su capacidad.
-	DLCursorList(int=5);
+	DLCursorList(int=25);
 
 	//Destructor.
 	~DLCursorList();
@@ -35,26 +35,26 @@ public:
 	//Inserta un elemento a la lista.
 	virtual bool insert(Object*, int);
 
-	//Consigue el Ìndice del elemento especificado como par·metro.
+	//Consigue el √≠ndice del elemento especificado como par√°metro.
     	virtual int indexOf(Object*) const;
 
-	//Retorna el objeto localizado en la posiciÛn especificada.
+	//Retorna el objeto localizado en la posici√≥n especificada.
   	virtual Object* get(unsigned) const;
 
 	//Retorna el elemento especificado y lo borra de la lista.
 	virtual Object* remove(unsigned);
 
 	/*
-	* Retorna la posiciÛn (en la lista) del objeto 
-	* que est· antes del especificado
-	* por el par·metro.
+	* Retorna la posici√≥n (en la lista) del objeto 
+	* que est√° antes del especificado
+	* por el par√°metro.
 	*/
 	virtual int prev(int) const;
 
 	/*
-	* Retorna la posiciÛn (en la lista) del objeto 
-	* que est· despuÈs del especificado
-	* por el par·metro.
+	* Retorna la posici√≥n (en la lista) del objeto 
+	* que est√° despu√©s del especificado
+	* por el par√°metro.
 	*/
 	virtual int next(int) const;
 
@@ -64,15 +64,14 @@ public:
 	//Retorna el primer elemento de la lista.
 	virtual Object* first() const;
 
-	//Retorna el ˙ltimo elemento de la lista.
+	//Retorna el √∫ltimo elemento de la lista.
 	virtual Object* last() const;
 	
-	//Retorna la representaciÛn en cadena de la lista.
+	//Retorna la representaci√≥n en cadena de la lista.
 	virtual void print() const;
 
-	//Determina si la lista est· llena o no.
+	//Determina si la lista est√° llena o no.
 	virtual bool isFull() const;
 };
 
 #endif
-	

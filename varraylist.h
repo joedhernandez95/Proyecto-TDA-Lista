@@ -25,7 +25,6 @@ virtual void print()const;
 
 private:
 unsigned int capacity;
-double increment;
 Object** data;
 bool makebigger();
 };

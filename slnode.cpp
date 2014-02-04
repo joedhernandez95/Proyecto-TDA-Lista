@@ -4,42 +4,47 @@
 using namespace std;
 
 SLNode::SLNode(){
-	next = NULL;
-	data = NULL;
+next = NULL;
+data = NULL;
 }
 
 SLNode::SLNode(Object* aData){
-	data = aData;
+data = aData;
 }
 
 SLNode::SLNode(Object* aData,SLNode* aNext){
-	data = aData;
-	next = aNext;
+data = aData;
+next = aNext;
 }
 
 SLNode::~SLNode(){
-	if(data)
-		delete data;
-	if(!(next==NULL))
-		delete next;
+//cout << "entre a borrar el nodo" << endl;
+
+//cout << "Data: " << data << endl;
+//cout << "Next: " << next << endl;
+
+if(data)
+delete data;
+if(next)
+delete next;
 }
 
 void SLNode::print()const{
-	data->print();
+data->print();
 }
 
 SLNode* SLNode::getNext()const{
-	return next;
+return next;
 }
 
 void SLNode::setNext(SLNode* aNext){
-	next = aNext;
+next = aNext;
 }
 
 Object* SLNode::getData()const{
-	return data;
+return data;
 }
 
 void SLNode::setData(Object* aData){
-	data = aData;
+data = aData;
 }

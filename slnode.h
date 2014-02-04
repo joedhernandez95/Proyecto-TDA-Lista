@@ -3,18 +3,18 @@
 #include "object.h"
 
 class SLNode{
-	Object* data;
-	SLNode* next;
+Object* data;
+SLNode* next;
 public:
-	SLNode();
-	SLNode(Object*);
-	SLNode(Object*,SLNode*);
-	~SLNode();
-	void print()const;
-	SLNode* getNext()const;
-	void setNext(SLNode*);
-	Object* getData()const;
-	void setData(Object*);
+SLNode();
+SLNode(Object*);
+SLNode(Object*,SLNode*);
+~SLNode();
+void print()const;
+SLNode* getNext()const;
+void setNext(SLNode*);
+Object* getData()const;
+void setData(Object*);
 };
 
 #endif

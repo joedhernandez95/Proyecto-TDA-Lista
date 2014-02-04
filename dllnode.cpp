@@ -63,4 +63,3 @@ Object* DLLNode::getData()const{
 void DLLNode::setData(Object* aData){
     data = aData;
 }
-
