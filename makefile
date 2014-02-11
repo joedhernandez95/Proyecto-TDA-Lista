@@ -1,5 +1,5 @@
 tda:	main.o integer.o linkedlist.o object.o tdalist.o dllnode.o farraylist.o varraylist.o slinkedlist.o dlcursorlist.o slnode.o
-	g++ -g main.o integer.o dllnode.o linkedlist.o object.o tdalist.o varraylist.o farraylist.o slinkedlist.o slnode.o dlcursorlist.o -o tda
+	g++ main.o integer.o dllnode.o linkedlist.o object.o tdalist.o varraylist.o farraylist.o slinkedlist.o slnode.o dlcursorlist.o -o tda
 
 main.o:	main.cpp tdalist.h linkedlist.h integer.h varraylist.h farraylist.h slinkedlist.h dlcursorlist.h
 	g++ -c main.cpp

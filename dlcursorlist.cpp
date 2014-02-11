@@ -29,7 +29,7 @@ DLCursorList::~DLCursorList()
 //Inserta un elemento a la lista.
 bool DLCursorList::insert(Object* o, int i)
 {
-	//Valida la posiciÛn. Si no es v·lida, corta y retorna false.
+	//Valida la posici√≥n. Si no es v√°lida, corta y retorna false.
 	if(i < 0 || i > ssize)
 		return false;
 	
@@ -37,7 +37,7 @@ bool DLCursorList::insert(Object* o, int i)
 	if(o == NULL)
 		return false;
 
-	//Si est· llena, retornar false y romper el flujo.
+	//Si est√° llena, retornar false y romper el flujo.
 	if(ssize == capacity)
 		return false;
 
@@ -64,7 +64,7 @@ bool DLCursorList::insert(Object* o, int i)
 				//Ahora hacemos que neo apunte a la cabeza.
 				map[neo].next = head;
 
-				//Hacemos que head tambiÈn apunte a neo.
+				//Hacemos que head tambi√©n apunte a neo.
 				map[head].prev = neo;
 			}
 
@@ -105,7 +105,7 @@ bool DLCursorList::insert(Object* o, int i)
 	}
 }		
 
-//Consigue el Ìndice del elemento especificado como par·metro.
+//Consigue el √≠ndice del elemento especificado como par√°metro.
 int DLCursorList::indexOf(Object* object) const
 {
 	//-1 por si no encuentra el elemento.
@@ -130,7 +130,7 @@ int DLCursorList::indexOf(Object* object) const
 	return i;
 }
 
-//Retorna el objeto localizado en la posiciÛn especificada.
+//Retorna el objeto localizado en la posici√≥n especificada.
 Object* DLCursorList::get(unsigned i) const
 {
 	if(i < 0 || i >= ssize)
@@ -190,10 +190,10 @@ Object* DLCursorList::remove(unsigned i)
 				tmp = map[tmp].next;
 			}
 
-			//Guardamos el dato en la posiciÛn.
+			//Guardamos el dato en la posici√≥n.
 			ret = map[tmp].datum;
 
-			//Nos deshacemos de la conexiÛn con datum.
+			//Nos deshacemos de la conexi√≥n con datum.
 			map[tmp].datum = NULL;
 
 			//Hacemos que el anterior se conecte al siguiente.
@@ -217,9 +217,9 @@ Object* DLCursorList::remove(unsigned i)
 }
 
 /*
-* Retorna la posiciÛn (en la lista) del objeto 
-* que est· antes del especificado
-* por el par·metro.
+* Retorna la posici√≥n (en la lista) del objeto 
+* que est√° antes del especificado
+* por el par√°metro.
 */
 int DLCursorList::prev(int i) const
 {
@@ -234,9 +234,9 @@ int DLCursorList::prev(int i) const
 }
 
 /*
-* Retorna la posiciÛn (en la lista) del objeto 
-* que est· despuÈs del especificado
-* por el par·metro.
+* Retorna la posici√≥n (en la lista) del objeto 
+* que est√° despu√©s del especificado
+* por el par√°metro.
 */
 int DLCursorList::next(int i) const
 {
@@ -282,7 +282,7 @@ Object* DLCursorList::first() const
 	}
 }
 
-//Retorna el ˙ltimo elemento de la lista.
+//Retorna el √∫ltimo elemento de la lista.
 Object* DLCursorList::last() const
 {
 	if(ssize == 0)
@@ -314,16 +314,16 @@ void DLCursorList::print() const
 	}
 }
 
-//Determina si la lista est· llena o no.
+//Determina si la lista est√° llena o no.
 bool DLCursorList::isFull() const
 {
 	return (ssize == capacity);
 }
 
-//Encuentra el siguiente espacio dÛnde insertar.
+//Encuentra el siguiente espacio d√≥nde insertar.
 int DLCursorList::findNextSlot() const
 {
-	//Variable que guardar· la posiciÛn libre.
+	//Variable que guardar√° la posici√≥n libre.
 	//Inicializada en -1 por si no encuentra.
 	int ret = -1;
 

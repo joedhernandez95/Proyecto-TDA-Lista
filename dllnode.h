@@ -14,11 +14,11 @@
 * [   NEXT    ]             Es el puntero al nodo siguiente                  *
 * ----------------------------------------------------------------------------
 * NOTAS:                                                                     *
-* En esta implementación se coloca un método print, que lo único que hará    *
-* es llamar al método print de data.                                         *
-* En esta implementación el destructor de esta clase destruirá cualquier     *
-* cosa que esté enlazada con el nodo, de la misma manera que una cadena se   *
-* suelta al cortar un eslabón.                                               *
+* En esta implementaciÃ³n se coloca un mÃ©todo print, que lo Ãºnico que harÃ¡    *
+* es llamar al mÃ©todo print de data.                                         *
+* En esta implementaciÃ³n el destructor de esta clase destruirÃ¡ cualquier     *
+* cosa que estÃ© enlazada con el nodo, de la misma manera que una cadena se   *
+* suelta al cortar un eslabÃ³n.                                               *
 */
 
 class DLLNode
